@@ -1,5 +1,10 @@
 #!/bin/bash
 
+sudo mkdir -p /var/www/resources/css
+sudo mkdir -p /var/www/resources/images
+sudo mkdir -p /var/www/resources/js
+sudo mkdir -p /var/www/ssi
+
 sudo apt-get update
 
 # Apache2
@@ -47,4 +52,5 @@ sudo apt-get -y upgrade
 
 sudo service apache2 restart
 
-sudo /home/ubuntu/github/ClubManner-frontend/bin/install.sh
+sudo mkdir -p /var/www/clubmanner.com/mock
+sudo cp -r /home/ubuntu/github/ClubManner-frontend/mock/* /var/www/clubmanner.com/mock
