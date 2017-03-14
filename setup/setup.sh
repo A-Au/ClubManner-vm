@@ -32,9 +32,19 @@ cd /vagrant/mod_wsgi-4.5.14
 make
 make install
 
+sudo rm /vargrant/4.5.14.tar.gz
+sudo rm -rf /vargrant/mod_wsgi-4.5.14
+
 echo "LoadModule wsgi_module modules/mod_wsgi.so" >> /etc/apache2/apache2.conf
+
+sudo cp /vagrant/setup/clubmanner.com.conf /etc/apache2/sites-available
+sudo a2ensite clubmanner.com.conf
+sudo a2dissite 000-default.conf
+
 make clean
 
 sudo apt-get -y upgrade
 
 sudo service apache2 restart
+
+sudo /home/ubuntu/github/ClubManner-frontend/bin/install.sh
