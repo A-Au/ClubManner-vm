@@ -31,7 +31,7 @@ sudo apt-get update
 sudo apt-get -y install postgresql-9.6
 
 cd /vagrant
-wget https:/.com/GrahamDumpleton/mod_wsgi/archive/4.5.14.tar.gz
+wget https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.15.tar.gz
 
 tar xvfz /vagrant/4.5.14.tar.gz
 cd /vagrant/mod_wsgi-4.5.14
