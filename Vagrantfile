@@ -21,5 +21,5 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: "/vagrant/setup/setup.sh"
 
-  config.vm.synced_folder "../.", "/home/ubuntu/github"
+  config.vm.synced_folder "../.", "/home/ubuntu/"
 end
