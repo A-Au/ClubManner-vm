@@ -14,12 +14,12 @@ Vagrant.configure("2") do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/xenial64"
   config.vm.network "private_network", ip: "192.168.12.2"
-  #config.vm.network "forwarded_port", guest: 80, host: 80
+  #config.vm.network "forwarded_port", guest: 5432, host: 54321
 
   #config.ssh.username = "ubuntu"
   #config.ssh.password = "password"
 
   config.vm.provision "shell", inline: "/vagrant/setup/setup.sh"
 
-  config.vm.synced_folder "../.", "/home/ubuntu/"
+  config.vm.synced_folder "../.", "/home/ubuntu/git"
 end
