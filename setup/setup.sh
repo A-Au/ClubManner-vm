@@ -37,7 +37,7 @@ sudo apt-get -y install postgresql-9.6
 
 sudo -u postgres psql -c "create role emailclient superuser"
 sudo -u postgres psql -c "alter role emailclient with password 'samisahighroller'"
-sudo -u postgres psql -c "create database clubmanneremails"
+sudo -u postgres psql -c "create database clubmanneremail"
 sudo -u postgres psql -c "alter role emailclient with login"
 
 cd /vagrant
