@@ -35,10 +35,10 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 sudo apt-get update
 sudo apt-get -y install postgresql-9.6
 
-sudo -u postgres psql -c "create role emailclient superuser"
-sudo -u postgres psql -c "alter role emailclient with password 'samisahighroller'"
-sudo -u postgres psql -c "create database clubmanneremail"
-sudo -u postgres psql -c "alter role emailclient with login"
+sudo -u postgres psql -c "create role djangouser superuser"
+sudo -u postgres psql -c "alter role djangouser with password 'password'"
+sudo -u postgres psql -c "create database djangoadmin"
+sudo -u postgres psql -c "alter role djangouser with login"
 
 cd /vagrant
 wget https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.14.tar.gz
@@ -49,7 +49,6 @@ cd /vagrant/mod_wsgi-4.5.14
 make
 make install
 
-#echo "LoadModule wsgi_module modules/mod_wsgi.so" >> /etc/apache2/apache2.conf
 sudo rm /etc/apache2/apache2.conf
 sudo cp /vagrant/setup/apache2.conf /etc/apache2/apache2.conf
 
@@ -68,13 +67,13 @@ sudo apt-get -y upgrade
 sudo mkdir -p /var/www/clubmanner.com/mock
 sudo cp -r /home/ubuntu/git/ClubManner-frontend/mock/* /var/www/clubmanner.com/mock
 
-cd /home/ubuntu/git/ClubManner-Email
-virtualenv -p python3.6 emailenv
-source /home/ubuntu/git/ClubManner-Email/emailenv/bin/activate
-pip install -r /home/ubuntu/git/ClubManner-Email/requirements.txt
+cd /home/ubuntu/git/ClubManner-backend
+virtualenv -p python3.6 backendenv
+source /home/ubuntu/git/ClubManner-backend/backendenv/bin/activate
+pip install -r /home/ubuntu/git/ClubManner-backend/requirements.txt
 
-/home/ubuntu/git/ClubManner-Email/clubmanneremail/manage.py makemigrations
-/home/ubuntu/git/ClubManner-Email/clubmanneremail/manage.py migrate
+/home/ubuntu/git/ClubManner-backend/manage.py makemigrations
+/home/ubuntu/git/ClubManner-backend/manage.py migrate
 
 sudo service apache2 restart
 
